@@ -1,4 +1,3 @@
-import java.util.*;
 class MyStack {
     private Queue<Integer> q1;
     private Queue<Integer> q2;
@@ -17,31 +16,28 @@ class MyStack {
     }
     
     public int pop() {
-        
-
-            int top = -1;
-
-            //Case 1
-            if(!q1.isEmpty()){
-                while(!q1.isEmpty()){
-                    top = q1.remove();
-                    if(q1.isEmpty()){
-                        break;
-                    }
-                    q2.add(top);
+        int top = -1;
+        //Case 1
+        if(!q1.isEmpty()){
+            while(!q1.isEmpty()){
+                top = q1.remove();
+                if(q1.isEmpty()){
+                    break;
                 }
-            }else{
-                //Case 2
-                while(!q2.isEmpty()){
-                    top = q2.remove();
-                    if(q2.isEmpty()){
-                        break;
-                    }
-                    q1.add(top);
-                }
+                q2.add(top);
             }
+        }else{
+            //Case 2
+            while(!q2.isEmpty()){
+                top = q2.remove();
+                if(q2.isEmpty()){
+                    break;
+                }
+                q1.add(top);
+            }
+        }
 
-            return top;
+        return top;
     }
     
     public int top() {
