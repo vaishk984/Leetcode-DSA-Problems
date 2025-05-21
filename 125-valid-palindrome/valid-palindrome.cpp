@@ -9,9 +9,8 @@ public:
             }
         }
 
-        int n = new_str.size();
         int i = 0;
-        int j = n-1;
+        int j = new_str.size()-1;
         while(i<j){
             if(new_str[i]!=new_str[j]){
                 
