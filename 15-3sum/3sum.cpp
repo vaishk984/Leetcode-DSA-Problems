@@ -24,7 +24,7 @@ public:
                     vector<int> temp = {nums[i], nums[j], nums[k]};
                     result.push_back(temp);
                     int leftVal = nums[j], rightVal = nums[k];
-                    while (j < k && nums[j] == leftVal) j++;  // Skip duplicates
+                    while (j < k && nums[j] == leftVal) j++;  
                     while (j < k && nums[k] == rightVal) k--;
                 }
                 
