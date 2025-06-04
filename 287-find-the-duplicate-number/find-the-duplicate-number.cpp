@@ -8,7 +8,7 @@ public:
             fast = nums[nums[fast]];  //fast + 2
         }while(slow != fast);
 
-        slow = nums[0];
+        fast = nums[0];
 
         while(slow != fast){
             slow = nums[slow];
