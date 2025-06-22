@@ -1,27 +1,20 @@
 class Solution {
 public:
-    double myPow(double x, int n) {
-        if(n==0) return 1;
-        if(x==0) return 0;
-        if(x==1) return 1;
-        if(x==-1 && n%2==0) return 1; 
-        if(x==-1 && n%2!=0) return -1;
-        long long binForm = n;
-        if(binForm<0){
-            x = 1/x;
-            binForm = -binForm;
+    double myPow(double a, int n) {
+        long power = n;
+        double result = 1;
+        double currentProduct = a;
+        if(n<0){
+            currentProduct = 1 / currentProduct;
+            power = -power;
         }
-        double ans = 1;
-
-        while(binForm>0){
-            if(binForm % 2==1){
-                ans = ans * x;
+        while (power > 0) {
+            if (power % 2 == 1) {
+                result *= currentProduct;  
             }
-
-            x = x*x;
-            binForm /= 2;
+            currentProduct *= currentProduct;            
+            power /= 2;           
         }
-
-        return ans;
+        return result;
     }
 };
