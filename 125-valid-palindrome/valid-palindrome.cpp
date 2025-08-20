@@ -1,22 +1,26 @@
 class Solution {
 public:
-    bool isPalindrome(string s) {
-        string new_str = "";
-        
+    string checkAlphaNum(string s){
+        string str = "";
+
         for(char c : s){
             if(isalnum(c)){
-                new_str += tolower(c);
-            }
+                str += tolower(c);
+            }   
         }
 
-        int i = 0;
-        int j = new_str.size() - 1;
+        return str;
+    }
+    
+    bool isPalindrome(string s) {
+        string str = checkAlphaNum(s);
+
+        int i = 0, j = str.size() - 1;
 
         while(i<=j){
-            if(new_str[i] != new_str[j]){
+            if(str[i] != str[j]){
                 return false;
             }
-
             i++;
             j--;
         }
