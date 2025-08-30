@@ -8,8 +8,8 @@ public:
             if((answer>INT_MAX/10) || (answer<INT_MIN/10)){
                 return 0;
             }
-            x = x/10;
             answer = answer *10 + digit;
+            x = x/10;
         }
         return answer;
     }
