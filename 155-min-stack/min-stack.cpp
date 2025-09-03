@@ -1,19 +1,17 @@
 class MinStack {
-   stack <pair <int, int>> st;
 public:
+    stack <pair <int, int>> st;
     MinStack() {
-       
+        
     }
     
     void push(int val) {
-         int min;
         if(st.empty()){
-            min = val;
-        } else{
-            min = std::min(st.top().second, val);
+            st.push({val, val});   
+        }else{
+            int minVal = min(val, st.top().second);
+            st.push({val, minVal});
         }
-
-        st.push({val, min});
     }
     
     void pop() {
