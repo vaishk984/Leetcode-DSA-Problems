@@ -11,8 +11,8 @@ public:
             s.push(val);
             minVal = val;
         }else{
-            if(val < minVal){
-                s.push((long long)2*val - minVal);
+            if(val<minVal){
+                s.push((long long)2 * val - minVal);
                 minVal = val;
             }else{
                 s.push(val);
