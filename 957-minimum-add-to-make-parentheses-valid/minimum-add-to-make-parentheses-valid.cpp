@@ -1,7 +1,7 @@
 class Solution {
 public:
     int minAddToMakeValid(string s) {
-        int open = 0, minAddsRequired = 0;
+        int open = 0, close = 0;
 
         for(int i = 0; i<s.size(); i++){
             if(s[i]=='('){
@@ -10,11 +10,11 @@ public:
                 if(open>0){
                     open--;
                 }else{
-                    minAddsRequired++;
+                    close++;
                 }
             }
         }
 
-        return open + minAddsRequired;
+        return open + close;
     }
 };
