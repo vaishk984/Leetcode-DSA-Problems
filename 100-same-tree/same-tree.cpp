@@ -16,9 +16,9 @@ public:
             return p==q;
         }
 
-        bool leftVal = isSameTree(p->left, q->left);
-        bool rightVal = isSameTree(p->right, q->right);
+        bool leftTree = isSameTree(p->left, q->left);
+        bool rightTree = isSameTree(p->right, q->right);
 
-        return leftVal && rightVal && p->val==q->val;
+        return leftTree && rightTree && p->val==q->val;
     }
 };
