@@ -1,15 +1,19 @@
 class Solution {
 public:
     int maxProduct(vector<int>& nums) {
-        int maxProd = nums[0];
-        int currMax = nums[0];
-        int currMin = nums[0];
+        int suffix = 1;
+        int prefix = 1;
+        int maxProd = INT_MIN;
+        int n = nums.size();
 
-        for(int i = 1; i<nums.size(); i++){
-            int tempMax = currMax;
-            currMax = max({nums[i], currMax * nums[i], currMin * nums[i]});
-            currMin = min({nums[i], tempMax * nums[i], currMin * nums[i]});
-            maxProd = max(maxProd, currMax);
+        for(int i = 0; i<nums.size(); i++){
+            if(prefix==0) prefix = 1;
+            if(suffix == 0) suffix = 1;
+
+            prefix *= nums[i];
+            suffix *= nums[n-i-1];
+
+            maxProd = max(maxProd, max(suffix, prefix));
         }
 
         return maxProd;
