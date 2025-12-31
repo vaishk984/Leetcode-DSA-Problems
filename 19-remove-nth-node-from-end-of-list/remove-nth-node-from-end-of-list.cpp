@@ -17,12 +17,12 @@ public:
         ListNode* fast = dummy;
 
         for(int i = 0; i<n; i++){
-            fast = fast -> next;
+            fast=fast->next;
         }
 
         while(fast->next != nullptr){
-            fast = fast->next;
             slow = slow->next;
+            fast = fast->next;
         }
 
         ListNode* toDelete = slow->next;
@@ -31,6 +31,7 @@ public:
 
         ListNode* newHead = dummy->next;
         delete dummy;
+
         return newHead;
     }
 };
