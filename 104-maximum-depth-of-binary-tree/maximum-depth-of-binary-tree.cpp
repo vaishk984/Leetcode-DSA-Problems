@@ -16,9 +16,9 @@ public:
             return 0;
         }
 
-        int rightH = maxDepth(root->right);
-        int leftH = maxDepth(root->left);
+        int leftDepth = maxDepth(root->left);
+        int rightDepth = maxDepth(root->right);
 
-        return max(rightH, leftH) + 1;
+        return max(leftDepth, rightDepth) + 1;
     }
 };
