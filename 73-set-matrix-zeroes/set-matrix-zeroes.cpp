@@ -3,20 +3,15 @@ public:
     void setZeroes(vector<vector<int>>& matrix) {
         int n = matrix.size();
         int m = matrix[0].size();
-        bool firstRow = false;
-        bool firstCol = false;
+
+        bool firstRow = false, firstCol = false;
 
         for(int i = 0; i<n; i++){
-            if(matrix[i][0] == 0){
-                firstCol = true;
-            }
+            if(matrix[i][0] == 0) firstCol = true;
         }
-        
+
         for(int j = 0; j<m; j++){
-        
-            if(matrix[0][j] == 0){
-                firstRow = true;
-            }
+            if(matrix[0][j] == 0) firstRow = true;
         }
 
         for(int i = 1; i<n; i++){
