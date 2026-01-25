@@ -6,16 +6,11 @@ public:
 
         for(int i = 0; i<nums.size(); i++){
             if(pre == 0) pre = 1;
-            pre *= nums[i];
-            maxProd = max(pre, maxProd);
-        }
-
-        for(int i = nums.size() - 1; i>=0; i--){
             if(suff == 0) suff = 1;
-            suff *= nums[i];
-            maxProd = max(suff, maxProd);
+            pre *= nums[i];
+            suff *= nums[nums.size() - i - 1];
+            maxProd = max(max(pre, suff), maxProd);
         }
-
         return maxProd;
     }
 };
