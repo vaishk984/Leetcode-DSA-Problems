@@ -1,46 +1,38 @@
 class Solution {
 public:
-    bool isValid(vector<int>& nums, int n, int k, int mid){
-        int sub = 1, sum = 0;
+    int maxSubarray(vector<int>& nums, int el){
+        int cntSubarray = 1;
+        long long sumSubarr = 0;
 
-        for(int i = 0; i<n; i++){
-            if(nums[i]>mid){
-                return false;
-            }
-
-            if(sum + nums[i] <= mid){
-                sum += nums[i];
+        for(int i = 0; i<nums.size(); i++){
+            if(sumSubarr + nums[i] <= el){
+                sumSubarr += nums[i];
             }else{
-                sub++;
-                sum = nums[i];
+                sumSubarr = nums[i];
+                cntSubarray++;
             }
         }
 
-        if(sub>k){
-            return false;
-        }else{
-            return true;
-        }
+        return cntSubarray;
     }
     int splitArray(vector<int>& nums, int k) {
-        int n = nums.size(), sum = 0;
-
-        for(int i = 0; i<n; i++){
-            sum+=nums[i];
+        if(nums.size() < k) return -1;
+        int maxi = INT_MIN, sum = 0;
+        for(int i = 0; i<nums.size(); i++){
+            sum += nums[i];
+            maxi = max(maxi, nums[i]);
         }
+        int low = maxi, high = sum;
 
-        int st = 0, en = sum, ans = -1;
-
-        while(st<=en){
-            int mid = st + (en-st)/2;
-            if(isValid(nums, n, k, mid)){
-                ans = mid;
-                en = mid - 1;
+        while(low<=high){
+            int mid = low + (high - low)/2;
+            if(maxSubarray(nums, mid)>k){
+                low = mid + 1;
             }else{
-                st = mid + 1;
+                high = mid - 1;
             }
         }
 
-        return ans;
+        return low;
     }
 };
