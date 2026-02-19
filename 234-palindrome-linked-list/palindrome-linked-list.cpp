@@ -10,9 +10,9 @@
  */
 class Solution {
 public:
-    ListNode* reverseNode(ListNode* head){
-        ListNode* prev = nullptr;
+    ListNode* reverse(ListNode* head){
         ListNode* curr = head;
+        ListNode* prev = nullptr;
 
         while(curr != nullptr){
             ListNode* next = curr->next;
@@ -28,23 +28,26 @@ public:
         ListNode* fast = head;
 
         while(fast->next != nullptr && fast->next->next != nullptr){
-            slow = slow -> next;
+            slow = slow->next;
             fast = fast->next->next;
         }
 
-        ListNode* newHead = reverseNode(slow->next);
+        ListNode* newHead = reverse(slow->next);
 
         ListNode* first = head;
         ListNode* second = newHead;
 
         while(second != nullptr){
             if(first->val != second->val){
+                reverse(newHead);
                 return false;
             }
+
             first = first->next;
             second = second->next;
         }
 
+        reverse(newHead);
         return true;
     }
 };
