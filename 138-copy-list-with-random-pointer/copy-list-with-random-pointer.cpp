@@ -16,35 +16,52 @@ public:
 
 class Solution {
 public:
+    void insertCopyInBetween(Node* head){
+        Node* temp = head;
+        while(temp != NULL){
+            Node* nextElement = temp->next;
+            Node* copyNode = new Node(temp->val);
+            copyNode->next = nextElement;
+            temp->next = copyNode;
+            temp = nextElement;
+        }
+
+    }
+
+    void connectRandomPointers(Node* head){
+        Node* temp = head;
+
+        while(temp != NULL){
+            Node* copyNode = temp->next;
+
+            if(temp->random){
+                copyNode->random = temp->random->next;
+            }else{
+                copyNode->random = NULL;
+            }
+
+            temp = temp->next->next;
+        }
+    }
+
+    Node* getDeepCopyList(Node* head){
+        Node* temp = head;
+        Node* dummyNode = new Node(-1);
+        Node* res = dummyNode;
+
+        while(temp != NULL){
+            res->next = temp->next;
+            temp->next = temp->next->next;
+            res = res->next;
+            temp = temp->next;
+        }
+
+        return dummyNode->next;
+    }
+
     Node* copyRandomList(Node* head) {
-        if(head==NULL){
-            return NULL;
-        }
-
-        unordered_map<Node*, Node*> m;
-
-        Node* newHead = new Node(head->val);
-        Node* oldTemp = head->next;
-        Node* newTemp = newHead;
-        m[head] = newHead;
-
-        while(oldTemp != NULL){
-            Node* copyNode = new Node(oldTemp->val);
-            m[oldTemp] = copyNode;
-            newTemp->next = copyNode;
-            oldTemp = oldTemp->next;
-            newTemp = newTemp->next;
-        }
-
-        oldTemp = head;
-        newTemp = newHead;
-
-        while(oldTemp != NULL){
-            newTemp->random = m[oldTemp->random];
-            oldTemp = oldTemp->next;
-            newTemp = newTemp->next;
-        }
-
-        return newHead;
+        insertCopyInBetween(head);
+        connectRandomPointers(head);
+        return getDeepCopyList(head);
     }
 };
