@@ -13,7 +13,7 @@ public:
                 balance++;
             }else{
                 balance--;
-                if(balance > 0){
+                if(balance>0){
                     result += s[i];
                 }
             }
