@@ -1,26 +1,30 @@
 class Solution {
 public:
     bool isSafe(vector<string> &board, int row, int col, int n){
+        //Horizontal
         for(int j = 0; j<n; j++){
-            if(board[row][j]=='Q'){
+            if(board[row][j] == 'Q'){
                 return false;
             }
         }
 
+        //Vertical
         for(int i = 0; i<n; i++){
             if(board[i][col] == 'Q'){
                 return false;
             }
         }
 
+        //left diagonal
         for(int i = row, j = col; i>=0 && j>=0; i--, j--){
-            if(board[i][j]=='Q'){
+            if(board[i][j] == 'Q'){
                 return false;
             }
         }
 
+        //right diagonal
         for(int i = row, j = col; i>=0 && j<n; i--, j++){
-            if(board[i][j]=='Q'){
+            if(board[i][j] == 'Q'){
                 return false;
             }
         }
@@ -46,7 +50,6 @@ public:
         vector<vector<string>> ans;
 
         nQueens(board, 0, n, ans);
-
         return ans;
     }
 };
