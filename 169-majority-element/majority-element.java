@@ -1,7 +1,5 @@
-
 class Solution {
     public int majorityElement(int[] nums) {
-        
         int count = 0;
         int el = nums[0];
 
@@ -9,17 +7,13 @@ class Solution {
             if(count==0){
                 count++;
                 el = nums[i];
-            }
-            else if(nums[i]==el){
+            }else if(el==nums[i]){
                 count++;
-            }
-
-            else{
+            }else{
                 count--;
             }
         }
 
         return el;
-        
     }
 }
